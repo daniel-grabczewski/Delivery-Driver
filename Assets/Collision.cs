@@ -9,5 +9,8 @@ public class NewBehaviourScript : MonoBehaviour
     Debug.Log("Ouch!");
   }
 
-  
+   void OnTriggerEnter2D(Collider2D other) 
+   {
+    Debug.Log("What was that?!");
+  }
 }
