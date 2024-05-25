@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Delivery : MonoBehaviour
 { 
   void OnCollisionEnter2D(Collision2D other) 
   {
