@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Delivery : MonoBehaviour
 { 
+
+  bool isPickedUp = false;
   void OnCollisionEnter2D(Collision2D other) 
   {
     Debug.Log("Ouch!");
@@ -11,13 +13,15 @@ public class Delivery : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D other) 
    {
-    if (other.CompareTag("Package"))
+    if (other.CompareTag("Package") && isPickedUp == false)
     {
       Debug.Log("Package picked up");
+      isPickedUp = true;
     }
-    else if (other.CompareTag("Customer")) 
+    else if (other.CompareTag("Customer") && isPickedUp == true ) 
     {
       Debug.Log("Package delivered!");
+      isPickedUp = false;
     }
   }
 }
