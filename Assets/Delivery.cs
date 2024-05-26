@@ -6,14 +6,14 @@ public class Delivery : MonoBehaviour
 { 
   [SerializeField] float delay;
   
-  private bool isPickedUp = false;
   void OnCollisionEnter2D(Collision2D other) 
   {
     Debug.Log("Ouch!");
   }
 
-  void OnTriggerEnter2D(Collider2D other)
+ void OnTriggerEnter2D(Collider2D other)
   {
+
     if (other.CompareTag("PlayerCar"))
     {
       Driver driver = other.GetComponent<Driver>();
