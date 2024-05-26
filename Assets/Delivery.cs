@@ -5,34 +5,41 @@ using UnityEngine;
 public class Delivery : MonoBehaviour
 { 
   [SerializeField] float delay;
+  
   private bool isPickedUp = false;
   void OnCollisionEnter2D(Collision2D other) 
   {
     Debug.Log("Ouch!");
   }
 
-   void OnTriggerEnter2D(Collider2D other) 
-   {
-    if (other.CompareTag("PlayerCar") && !isPickedUp)
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.CompareTag("PlayerCar"))
     {
-      PickUpPackage();
-      Destroy(gameObject, delay);
-    }
-    else if (other.CompareTag("PlayerCar") && isPickedUp) 
-    {
-      DeliverPackage();
+      Driver driver = other.GetComponent<Driver>();
+
+      if (CompareTag("Package") && !driver.isPickedUp)
+      {
+        PickUpPackage(driver);
+        Destroy(gameObject, delay);
+      }
+      else if (CompareTag("Customer") && driver.isPickedUp)
+      {
+        DeliverPackage(driver);
+        Destroy(gameObject, delay);
+      }
     }
   }
 
-  private void PickUpPackage()
+  private void PickUpPackage(Driver driver)
   {
     Debug.Log("Package picked up");
-    isPickedUp = true;
+    driver.isPickedUp = true;
   }
 
-  private void DeliverPackage() {
+  private void DeliverPackage(Driver driver) {
       Debug.Log("Package delivered!");
-      isPickedUp = false;
+      driver.isPickedUp = false;
   }
 
 }

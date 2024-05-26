@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Package
   - Customer
+  - PlayerCar
   layers:
   - Default
   - TransparentFX

@@ -3052,7 +3052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed3605650804e14599311e6da004825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
+  delay: 0
 --- !u!1 &1207718279
 GameObject:
   m_ObjectHideFlags: 0
@@ -4261,7 +4261,7 @@ GameObject:
   - component: {fileID: 1553569901}
   - component: {fileID: 1553569904}
   - component: {fileID: 1553569903}
-  - component: {fileID: 1553569902}
+  - component: {fileID: 1553569905}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Customer
@@ -4284,19 +4284,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1632484607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1553569902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553569900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed3605650804e14599311e6da004825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
 --- !u!58 &1553569903
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4384,6 +4371,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1553569905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553569900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed3605650804e14599311e6da004825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
 --- !u!1 &1588201604
 GameObject:
   m_ObjectHideFlags: 0
@@ -5808,7 +5808,7 @@ GameObject:
   - component: {fileID: 2078534229}
   m_Layer: 0
   m_Name: Cruisy McDrive
-  m_TagString: Untagged
+  m_TagString: PlayerCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5827,6 +5827,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steerSpeed: 300
   moveSpeed: 10
+  hasPackageColor:
+    serializedVersion: 2
+    rgba: 16842524
+  noPackageColor:
+    serializedVersion: 2
+    rgba: 33554431
 --- !u!212 &2078534225
 SpriteRenderer:
   m_ObjectHideFlags: 0
