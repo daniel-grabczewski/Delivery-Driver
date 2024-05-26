@@ -25,12 +25,12 @@ public class Delivery : MonoBehaviour
 
   private void PickUpPackage()
   {
-    //Debug.Log("Package picked up");
+    Debug.Log("Package picked up");
     isPickedUp = true;
   }
 
   private void DeliverPackage() {
-      //Debug.Log("Package delivered!");
+      Debug.Log("Package delivered!");
       isPickedUp = false;
   }
 
