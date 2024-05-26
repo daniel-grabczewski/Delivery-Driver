@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Driver : MonoBehaviour
@@ -14,6 +15,7 @@ public class Driver : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -21,16 +23,21 @@ public class Driver : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
+    
     {
+          Delivery delivery = other.GetComponent<Delivery>();
+
         if (other.CompareTag("Package") && !isPickedUp)
         {
             spriteRenderer.color = hasPackageColor;
             isPickedUp = true;
+            Destroy(other.gameObject, delivery.delay);
         }
         else if (other.CompareTag("Customer") && isPickedUp)
         {
             spriteRenderer.color = noPackageColor;
             isPickedUp = false;
+            Destroy(other.gameObject, delivery.delay);
         }
     }
 
