@@ -18,18 +18,16 @@ public class Driver : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = noPackageColor;
-
-
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Package") && isPickedUp)
+        if (other.CompareTag("Package") && !isPickedUp)
         {
             spriteRenderer.color = hasPackageColor;
             isPickedUp = true;
         }
-        else if (other.CompareTag("Customer") && !isPickedUp)
+        else if (other.CompareTag("Customer") && isPickedUp)
         {
             spriteRenderer.color = noPackageColor;
             isPickedUp = false;
