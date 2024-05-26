@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Delivery : MonoBehaviour
 { 
-
+  [SerializeField] float delay;
   private bool isPickedUp = false;
   void OnCollisionEnter2D(Collision2D other) 
   {
@@ -13,11 +13,12 @@ public class Delivery : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D other) 
    {
-    if (other.CompareTag("Package") && !isPickedUp)
+    if (other.CompareTag("PlayerCar") && !isPickedUp)
     {
       PickUpPackage();
+      Destroy(gameObject, delay);
     }
-    else if (other.CompareTag("Customer") && isPickedUp) 
+    else if (other.CompareTag("PlayerCar") && isPickedUp) 
     {
       DeliverPackage();
     }
