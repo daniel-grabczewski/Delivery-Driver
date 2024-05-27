@@ -29,10 +29,6 @@ public class Driver : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
-
-    //Compare all tags. If one of the tags is a 'Boost', then reassign the moveSpeed to the boostSpeed for 2 seconds.
-    //If one of the tags is an 'Obstacle', or, I guess in this case, everything else will be an obstacle?
-    
     {
           Delivery delivery = other.GetComponent<Delivery>();
 
