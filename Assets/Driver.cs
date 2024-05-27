@@ -13,16 +13,25 @@ public class Driver : MonoBehaviour
     [SerializeField] Color32 hasPackageColor = new Color32(255, 0, 0, 255);
     [SerializeField] Color32 noPackageColor = new Color32(0, 255, 0, 255);
 
-    SpriteRenderer spriteRenderer;
+    [SerializeField] float slowSpeed = 5f;
+    [SerializeField] float slowDuration = 2f;
+    [SerializeField] float boostSpeed = 20f;
+    [SerializeField] float boostDuration = 2f;
 
+    SpriteRenderer spriteRenderer;
+    private float originalSpeed;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = noPackageColor;
+        originalSpeed = moveSpeed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
+
+    //Compare all tags. If one of the tags is a 'Boost', then reassign the moveSpeed to the boostSpeed for 2 seconds.
+    //If one of the tags is an 'Obstacle', or, I guess in this case, everything else will be an obstacle?
     
     {
           Delivery delivery = other.GetComponent<Delivery>();
@@ -39,6 +48,25 @@ public class Driver : MonoBehaviour
             isPickedUp = false;
             Destroy(other.gameObject, delivery.delay);
         }
+        else if (other.CompareTag("SpeedUp")) {
+          moveSpeed = boostSpeed;
+          Invoke(nameof(ResetSpeed), boostDuration);
+          Debug.Log("Speedup for " + boostDuration + " seconds!");
+        }
+    }
+
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.CompareTag("Obstacle")) {
+          moveSpeed = slowSpeed;
+          Invoke(nameof(ResetSpeed), slowDuration);
+          Debug.Log("Slowed for " + slowDuration + " seconds!");
+        }
+    }
+
+    void ResetSpeed() 
+    {
+      moveSpeed = originalSpeed;
     }
 
     void Update()
